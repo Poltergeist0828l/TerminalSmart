@@ -57,7 +57,7 @@ function Balanca() {
 
   return (
     <div className="weight-box">
-      <h2>BALANÇA</h2>
+      <h2>PESO:</h2>
 
       <div className="peso-display">
         <h1 className="peso">{peso} kg</h1>

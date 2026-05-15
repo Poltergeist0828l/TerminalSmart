@@ -2,7 +2,7 @@ function Pagamento({ total, finalizar, voltar }) {
   return (
     <div className="tela-boas-vindas">
       <div className="boot-card">
-        <h2>METODO PAGAMENTO</h2>
+        <h2>METODO PAGAMENTO:</h2>
 
         <h1>R$ {total.toFixed(2)}</h1>
 

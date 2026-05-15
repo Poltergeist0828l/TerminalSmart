@@ -29,7 +29,7 @@ function Login({ cpf, setCpf, entrar }) {
 
   async function salvarCliente(cpfValor, anonimo = false) {
 
-    // 🔥 ANÔNIMO → NÃO CHAMA BACKEND
+    //  ANÔNIMO → NÃO CHAMA BACKEND
     if (anonimo) {
       entrar();
       return;
@@ -44,7 +44,7 @@ function Login({ cpf, setCpf, entrar }) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          cpf: cpfValor.replace(/\D/g, ""), // só número
+          cpf: cpfValor.replace(/\D/g, ""), 
         }),
       });
 
@@ -103,7 +103,6 @@ function Login({ cpf, setCpf, entrar }) {
           {loading ? "Processando..." : "CONTINUAR"}
         </button>
 
-        {/* ANÔNIMO */}
         <button
           className="btn-secondary"
           onClick={() => salvarCliente(null, true)}

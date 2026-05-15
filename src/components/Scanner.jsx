@@ -26,7 +26,7 @@ function Scanner({ setProdutos }) {
 
   return (
     <div className="camera-box">
-      <h2>📷 LEITOR</h2>
+      <h2>Posicione o produto dentro do quadrado</h2>
       <div id="reader"></div>
     </div>
   );
