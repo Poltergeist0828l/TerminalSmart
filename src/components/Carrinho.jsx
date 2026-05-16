@@ -22,7 +22,7 @@ function Carrinho({ produtos, setProdutos, total, finalizar }) {
       <h1>R$ {total.toFixed(2)}</h1>
 
       <button className="finish-btn" onClick={finalizar}>
-        FINALIZAR VENDA
+        FINALIZAR COMPRA
       </button>
     </div>
   );

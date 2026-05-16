@@ -7,7 +7,7 @@ function Boot({ irLogin }) {
       irLogin();
     }, 3000);
 
-    // 🔥 limpeza correta
+    
     return () => clearTimeout(timer);
   }, [irLogin]);
 
