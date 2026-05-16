@@ -1,3 +1,5 @@
+import "../css/carrinho.css";
+
 function Carrinho({ produtos, setProdutos, total, finalizar }) {
   function remover(id) {
     setProdutos(produtos.filter((p) => p.id !== id));

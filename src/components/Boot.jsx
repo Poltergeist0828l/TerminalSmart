@@ -1,14 +1,20 @@
 import { useEffect } from "react";
+import "../css/login.css"; 
 
 function Boot({ irLogin }) {
   useEffect(() => {
-    setTimeout(irLogin, 3000);
-  }, []);
+    const timer = setTimeout(() => {
+      irLogin();
+    }, 3000);
+
+    // 🔥 limpeza correta
+    return () => clearTimeout(timer);
+  }, [irLogin]);
 
   return (
     <div className="tela-boas-vindas">
       <img src="/img/ima.png" className="ima" />
-      <p>Inicializando sistema...</p>
+      <p className="boot-text">Inicializando sistema...</p>
     </div>
   );
 }

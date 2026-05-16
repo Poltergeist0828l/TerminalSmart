@@ -1,5 +1,11 @@
-import "./css/style.css";
-import { useState } from "react";
+import "./css/global.css";
+import "./css/header.css";
+import "./css/scanner.css";
+import "./css/carrinho.css";
+import "./css/balanca.css";
+import "./css/login.css";
+
+import "./css/pagamento.css";import { useState } from "react";
 
 import Boot from "./components/Boot";
 import Login from "./components/Login";
@@ -46,12 +52,14 @@ function App() {
 
       <div className="main">
         <Scanner setProdutos={setProdutos} />
+
         <Carrinho
           produtos={produtos}
           setProdutos={setProdutos}
           total={total}
           finalizar={() => setTelaPagamento(true)}
         />
+
         <Balanca />
       </div>
     </div>

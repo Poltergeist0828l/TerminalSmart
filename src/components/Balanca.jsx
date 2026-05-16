@@ -1,3 +1,4 @@
+import "../css/balanca.css";
 import { useEffect, useState } from "react";
 
 function Balanca() {

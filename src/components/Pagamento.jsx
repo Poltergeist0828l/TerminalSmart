@@ -1,3 +1,4 @@
+import "../css/pagamento.css";
 function Pagamento({ total, finalizar, voltar }) {
   return (
     <div className="tela-boas-vindas">

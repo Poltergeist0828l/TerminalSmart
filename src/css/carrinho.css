@@ -1,0 +1,96 @@
+.cart-box {
+  flex: 1.5;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow);
+}
+
+.cart-box h2 {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.products {
+  flex: 1;
+  min-height: 200px;
+  max-height: 350px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+
+.products::-webkit-scrollbar {
+  width: 4px;
+}
+.products::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+
+.product {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border-color);
+  padding: 14px 16px;
+  border-radius: 12px;
+}
+
+.product span:first-child {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.product span:nth-child(2) {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--success);
+  font-family: ui-monospace, monospace;
+}
+
+/* BOTÃO REMOVER */
+.product button {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.product button:hover {
+  color: var(--danger);
+}
+
+
+.total {
+  font-size: 2rem;
+  font-weight: 800;
+  font-family: ui-monospace, monospace;
+}
+
+.finish-btn {
+  margin-top: auto;
+  width: 100%;
+  background: var(--accent);
+  color: var(--bg-app);
+  border: none;
+  border-radius: 12px;
+  padding: 16px;
+  font-size: 0.9rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.finish-btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}

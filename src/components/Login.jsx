@@ -1,3 +1,4 @@
+import "../css/login.css";
 import { useState } from "react";
 
 function Login({ cpf, setCpf, entrar }) {

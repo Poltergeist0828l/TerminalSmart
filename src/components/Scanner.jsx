@@ -1,33 +1,64 @@
-import { useEffect, useRef } from "react";
-import { Html5Qrcode } from "html5-qrcode";
+import { useEffect, useState } from "react";
+import "../css/scanner.css";
 
 function Scanner({ setProdutos }) {
-  const scannerRef = useRef(null);
+  const [codigo, setCodigo] = useState("");
+  const [ultimaLeitura, setUltimaLeitura] = useState("");
+  const [status, setStatus] = useState("Aguardando leitura...");
 
   useEffect(() => {
-    const html5Qrcode = new Html5Qrcode("reader");
-    scannerRef.current = html5Qrcode;
+    let buffer = "";
 
-    html5Qrcode.start(
-      { facingMode: "environment" },
-      { fps: 20 },
-      (decodedText) => {
-        fetch(`http://localhost:8080/api/produtos/${decodedText}`)
-          .then((r) => r.json())
+    function handleKeyDown(e) {
+      if (e.key === "Enter") {
+        if (!buffer) return;
+
+        const codigoLido = buffer;
+        buffer = "";
+
+        setUltimaLeitura(codigoLido);
+        setStatus("🔎 PROCESSANDO...");
+
+        fetch(`http://localhost:8080/api/produtos/${codigoLido}`)
+          .then((res) => {
+            if (!res.ok) throw new Error();
+            return res.json();
+          })
           .then((p) => {
             setProdutos((prev) => [
               { ...p, id: Date.now(), preco: p.preco || 0 },
               ...prev,
             ]);
+            setStatus("PRODUTO ADICIONADO");
+          })
+          .catch(() => setStatus("PRODUTO NÃO ENCONTRADO"))
+          .finally(() => {
+            setTimeout(() => setStatus("SISTEMA ONLINE"), 1500);
           });
+
+        return;
       }
-    );
-  }, []);
+
+      if (/^[0-9]$/.test(e.key)) {
+        buffer += e.key;
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [setProdutos]);
 
   return (
     <div className="camera-box">
-      <h2>Posicione o produto dentro do quadrado</h2>
-      <div id="reader"></div>
+      <h2>Posicione o codigo de barras do produto</h2>
+
+      <div className="camera-footer">
+        <p>Status: {status}</p>
+        <p>Último código: {ultimaLeitura || "Nenhum"}</p>
+      </div>
     </div>
   );
 }
